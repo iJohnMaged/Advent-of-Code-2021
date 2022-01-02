@@ -1,0 +1,18 @@
+horizontal_pos = 0
+depth = 0
+aim = 0
+
+with open("puzzle.txt", "r") as f:
+    for line in f.readlines():
+        cmd, x = line.split()
+        if cmd == "forward":
+            horizontal_pos += int(x)
+            depth += aim * int(x)
+        elif cmd == "up":
+            aim -= int(x)
+        elif cmd == "down":
+            aim += int(x)
+        else:
+            raise ValueError("Unknown Command")
+
+print(f"Answer: {horizontal_pos * depth}")
